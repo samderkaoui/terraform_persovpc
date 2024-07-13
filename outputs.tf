@@ -11,6 +11,5 @@ output "private_subnets" {
 }
 
 output "nat_gateway_id" {
-  value = aws_nat_gateway.nat[0].id
-  condition = length(var.public_subnet_cidrs) > 0
+  value = length(var.public_subnet_cidrs) > 0 ? aws_nat_gateway.nat[0].id : null
 }
